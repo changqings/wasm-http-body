@@ -1,4 +1,4 @@
-# istio wasm_rust_jwt_parse
+# istio wasm_http_body_response
 - tested istio and k8s version
 ```
 k8s > 1.20
@@ -18,15 +18,11 @@ make build
 cargo build --target wasm32-unknown-unknown --release
 ```
 
-完成后`.wasm`文件在`target/wasm32-unknown-unknown/release/wasm_rust_jwt_parse.wasm`，可以使用 [Envoy](#envoy) 或者 [istio](#istio) 在集群中测试。
+完成后`.wasm`文件在`target/wasm32-unknown-unknown/release/wasm_http_body.wasm`，可以使用 [Envoy](#envoy) 或者 [istio](#istio) 在集群中测试。
 
-启动后访问[http://localhost:8080/headers?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWQiOjExMTEyMjIyLCJpYXQiOjE1MTYyMzkwMjJ9.Lp-EEKsLfOUrHlkvUNskrRJDg4UU1Wt4P45xFEO-OvU](http://localhost:8080/headers?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWQiOjExMTEyMjIyLCJpYXQiOjE1MTYyMzkwMjJ9.Lp-EEKsLfOUrHlkvUNskrRJDg4UU1Wt4P45xFEO-OvU)，Header 中有`X-Xxx-Userid`:
-```json
-{
-  "headers": {
-    "X-Xxx-Userid": "11112222"
-  }
-}
+启动后访问[http://localhost:8080]
+```
+I am here
 ```
 
 ## Envoy

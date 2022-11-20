@@ -15,4 +15,4 @@ run:
 	--log-format '%v'
 
 build-image: build
-	docker build -t ccr.ccs.tencentyun.com/xxx/wasm:wasm_http_body_res-v0.0.1 .
+	docker build -t ccr.ccs.tencentyun.com/xxx/wasm:wasm_http_body-v0.0.1 .
