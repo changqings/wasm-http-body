@@ -1,0 +1,15 @@
+[package]
+name = "wasm_http_body_res"
+version = "0.0.1"
+authors = ["shenqinpeng@126.com"]
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+proxy-wasm = "0.2.0"
+
+[lib]
+path = "src/lib.rs"
+crate-type = ["cdylib"]
+
