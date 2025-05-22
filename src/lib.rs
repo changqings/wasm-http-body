@@ -17,34 +17,35 @@ use proxy_wasm::types::*;
 
 proxy_wasm::main! {{
     proxy_wasm::set_log_level(LogLevel::Info);
-    proxy_wasm::set_root_context(|_| -> Box<dyn RootContext> { Box::new(HttpBodyRoot) });
+    proxy_wasm::set_root_context(|_| -> Box<dyn RootContext> { Box::new(HttpDemoRoot) });
 }}
 
-struct HttpBodyRoot;
+struct HttpDemoRoot;
 
-impl Context for HttpBodyRoot {}
+impl Context for HttpDemoRoot {}
 
-impl RootContext for HttpBodyRoot {
+impl RootContext for HttpDemoRoot {
     fn get_type(&self) -> Option<ContextType> {
         Some(ContextType::HttpContext)
     }
 
     fn create_http_context(&self, _: u32) -> Option<Box<dyn HttpContext>> {
-        Some(Box::new(HttpBody))
+        Some(Box::new(HttpDemo))
     }
 }
 
-struct HttpBody;
+struct HttpDemo;
 
-impl Context for HttpBody {}
+impl Context for HttpDemo {}
 
-impl HttpContext for HttpBody {
+impl HttpContext for HttpDemo {
     fn on_http_response_headers(&mut self, _: usize, _: bool) -> Action {
         // If there is a Content-Length header and we change the length of
         // the body later, then clients will break. So remove it.
         // We must do this here, because once we exit this function we
         // can no longer modify the response headers.
         self.set_http_response_header("content-length", None);
+        self.set_http_response_header("app", Some("http_demo"));
         Action::Continue
     }
 
@@ -55,9 +56,7 @@ impl HttpContext for HttpBody {
             return Action::Pause;
         }
 
-        // Replace the message body if it contains the text "secret".
-        // Since we returned "Pause" previuously, this will return the whole body.
-        let new_body = format!("I am here");
+        let new_body = format!("http demo, from wasm");
         self.set_http_response_body(0, body_size, &new_body.into_bytes());
         Action::Continue
     }

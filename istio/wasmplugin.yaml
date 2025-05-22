@@ -1,7 +1,7 @@
 apiVersion: extensions.istio.io/v1alpha1
 kind: WasmPlugin
 metadata:
-  name: http-set-resonse-body
+  name: http-demo
   namespace: istio-system
 spec:
   imagePullPolicy: Always
@@ -11,5 +11,5 @@ spec:
     matchLabels:
       app: istio-ingressgateway-xxx
       istio: ingressgateway
-  url: oci://ccr.ccs.tencentyun.com/xxx/wasm:wasm-http-body-v0.0.1
+  url: oci://ccr.ccs.tencentyun.com/xxx/wasm:wasm-http-demo-v0.0.1
   phase: AUTHN

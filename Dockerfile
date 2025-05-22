@@ -1,4 +1,2 @@
 FROM scratch
-
-
-COPY target/wasm32-unknown-unknown/release/wasm_rust_jwt_parse.wasm ./plugin.wasm
+COPY target/wasm32-wasip1/release/wasm_http_demo.wasm ./plugin.wasm

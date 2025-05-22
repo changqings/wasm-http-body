@@ -4,7 +4,7 @@
 
 build:
 	cargo build \
-	--target wasm32-unknown-unknown \
+	--target wasm32-wasip1 \
 	--release
 
 clean:
@@ -15,4 +15,4 @@ run:
 	--log-format '%v'
 
 build-image: build
-	docker build -t ccr.ccs.tencentyun.com/xxx/wasm:wasm_http_body-v0.0.1 .
+	docker build -t ccr.ccs.tencentyun.com/xxx/wasm:wasm_http_demo-v0.0.1 .
