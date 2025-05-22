@@ -1,4 +1,4 @@
-# istio wasm_http demo
+# istio wasm_http_demo
 - tested istio and k8s version
 ```
 k8s > 1.20
@@ -20,7 +20,7 @@ make build
 cargo build --target wasm32-wasip1 --release
 ```
 
-完成后`.wasm`文件在`target/wasm32-wasip1/release/wasm_http_body.wasm`，可以使用 [Envoy](#envoy) 或者 [istio](#istio) 在集群中测试。
+完成后`.wasm`文件在`target/wasm32-wasip1/release/wasm_http_demo.wasm`，可以使用 [Envoy](#envoy) 或者 [istio](#istio) 在集群中测试。
 
 启动后访问[http://localhost:8080]
 ```
